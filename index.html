@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSort AI - Smart Waste Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2>🌱 EcoSort AI</h2>
+
+        <nav>
+            <a href="#dashboard" class="active">🏠 Dashboard</a>
+            <a href="#bins">🗑️ Smart Bins</a>
+            <a href="#collection">🚛 Collection Planner</a>
+            <a href="#detection">♻️ Waste Detection</a>
+            <a href="#history">📋 Collection Log</a>
+            <a href="#reports">📊 Reports</a>
+        </nav>
+
+        <p class="sidebar-footer">Smart Waste Management</p>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="dashboard">
+
+        <!-- HEADER -->
+        <header class="topbar">
+            <div>
+                <h1>Dashboard</h1>
+                <p>Welcome to EcoSort AI Management System</p>
+            </div>
+
+            <span class="admin">👤 Admin</span>
+        </header>
+
+
+        <!-- STATISTICS -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <h3>Total Waste Collected</h3>
+                <h2>1,250 kg</h2>
+                <p>Sample dashboard data</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Waste Recycled</h3>
+                <h2>820 kg</h2>
+                <p>Sample dashboard data</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Active Smart Bins</h3>
+                <h2 id="activeBinCount">3</h2>
+                <p>Bins being monitored</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Pending Collection</h3>
+                <h2 id="pendingBinCount">0</h2>
+                <p>Bins above 75% full</p>
+            </div>
+
+        </section>
+
+
+        <!-- SMART BIN MONITORING -->
+        <section class="panel" id="bins">
+
+            <h2>🗑️ Smart Bin Monitoring</h2>
+            <p>Monitor waste bin fill levels and collection needs.</p>
+
+            <div id="bin-list" class="bin-list"></div>
+
+        </section>
+
+
+        <!-- COLLECTION PLANNER -->
+        <section class="panel" id="collection">
+
+            <h2>🚛 Smart Collection Planner</h2>
+
+            <p>
+                Prioritise waste bins according to their fill levels
+                to help organise collection.
+            </p>
+
+            <div class="planner-controls">
+
+                <div>
+                    <label for="binSelect">Select Waste Bin</label>
+
+                    <select id="binSelect">
+                    </select>
+                </div>
+
+                <div>
+                    <label for="fillLevel">
+                        Update Fill Level:
+                        <span id="fillValue">50%</span>
+                    </label>
+
+                    <input
+                        type="range"
+                        id="fillLevel"
+                        min="0"
+                        max="100"
+                        value="50"
+                    >
+                </div>
+
+                <button id="updateBinButton" type="button">
+                    Update Bin
+                </button>
+
+            </div>
+
+            <h3 class="subheading">📍 Collection Priority</h3>
+
+            <div id="collectionSummary"></div>
+
+            <div id="collectionPlan"></div>
+
+            <p class="note">
+                Collection order is prioritised by bin fill percentage.
+                Fill levels are demonstration data, not live sensor readings.
+            </p>
+
+        </section>
+
+
+        <!-- AI WASTE DETECTION -->
+        <section class="panel" id="detection">
+
+            <h2>♻️ AI Waste Detection</h2>
+
+            <p>Upload a waste image to identify its category.</p>
+
+            <div class="upload-container">
+
+                <div class="upload-box">
+
+                    <div class="upload-icon">📷</div>
+
+                    <h3>Upload Waste Image</h3>
+
+                    <p>Select an image from your computer</p>
+
+                    <input
+                        type="file"
+                        id="wasteImage"
+                        accept="image/*"
+                    >
+
+                    <div id="imagePreview"></div>
+
+                    <button id="detectButton" type="button">
+                        Detect Waste
+                    </button>
+
+                </div>
+
+
+                <div class="result-box">
+
+                    <h3>Detection Result</h3>
+
+                    <div id="detectionResult">
+                        <p>Your classification result will appear here.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- WASTE COLLECTION LOG -->
+        <section class="panel" id="history">
+
+            <h2>📋 Waste Collection Log</h2>
+
+            <p>View previously detected waste items.</p>
+
+            <h3 id="historyCount">Total detections: 0</h3>
+
+            <div id="historyList"></div>
+
+            <button
+                id="clearHistoryButton"
+                class="danger-button"
+                type="button"
+            >
+                Clear History
+            </button>
+
+        </section>
+
+
+        <!-- REPORTS -->
+        <section class="panel" id="reports">
+
+            <h2>📊 Waste Management Reports</h2>
+
+            <p>View waste collection and recycling performance.</p>
+
+            <div class="report-grid">
+
+                <div class="report-card">
+                    <h3>AI Detections</h3>
+                    <h2 id="reportDetections">0</h2>
+                </div>
+
+                <div class="report-card">
+                    <h3>Bins Requiring Collection</h3>
+                    <h2 id="reportPending">0</h2>
+                </div>
+
+                <div class="report-card">
+                    <h3>Urgent Bins</h3>
+                    <h2 id="reportUrgent">0</h2>
+                </div>
+
+            </div>
+
+            <p class="note">
+                Detection reports are based on saved browser records.
+                Collection statistics use demonstration bin data.
+            </p>
+
+        </section>
+
+
+        <footer class="footer">
+            <p>🌱 EcoSort AI | Smart Waste Sorting and Collection Optimization</p>
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- AI MODEL LIBRARIES -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.1/dist/mobilenet.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
